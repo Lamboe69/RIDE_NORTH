@@ -12,8 +12,10 @@ data class PhoneOtpRequest(
 
 data class VerifyOtpRequest(
     @field:NotBlank(message = "Phone number is required")
+    @field:Pattern(regexp = "^[0-9]{10,15}$", message = "Phone number must be 10-15 digits")
     val phoneNumber: String,
     @field:NotBlank(message = "OTP is required")
+    @field:Pattern(regexp = "^[0-9]{6}$", message = "OTP must be exactly 6 digits")
     val otp: String
 )
 
