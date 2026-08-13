@@ -49,16 +49,8 @@ class Vehicle(
 
 enum class VehicleType(val displayName: String, val passengerCapacity: Int) {
     BODA("Boda Boda", 1),
-    BICYCLE_BODA("Bicycle Boda", 1),
     TUKTUK("Tuk Tuk", 3),
     CAR("Private Car", 4),
-    MINIBUS("Minibus", 14),
-    COACH("Long-distance Coach", 40),
-    PICKUP("Pickup Truck", 2),
     TRUCK("Truck (Medium)", 3),
-    LORRY("Lorry (Heavy)", 5),
-    TRACTOR("Tractor & Trailer", 2),
-    MOTORCYCLE_COURIER("Boda Courier", 1),
-    AMBULANCE("Ambulance", 2),
-    FERRY("Ferry / Boat", 20)
+    LORRY("Lorry (Heavy)", 5)
 }
