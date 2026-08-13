@@ -72,10 +72,3 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
-
-flyway {
-    url = "jdbc:postgresql://localhost:5432/ridenorth"
-    user = "ridenorth"
-    password = "ridenorth"
-    schemas = arrayOf("public")
-}
