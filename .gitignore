@@ -1,0 +1,15 @@
+.gradle
+build/
+out/
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.DS_Store
+logs/
+*.log
+.env
+.env.local
+*.swp
+*~

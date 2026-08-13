@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgis/postgis:16-3.3
+    container_name: ridenorth-postgres
+    environment:
+      POSTGRES_DB: ridenorth
+      POSTGRES_USER: ridenorth
+      POSTGRES_PASSWORD: ridenorth
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ridenorth"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: ridenorth-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ridenorth-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ridenorth
+      SPRING_DATASOURCE_USERNAME: ridenorth
+      SPRING_DATASOURCE_PASSWORD: ridenorth
+      SPRING_REDIS_HOST: redis
+      JWT_SECRET: ridenorth-super-secret-key-change-in-production
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend/src/main/resources/db/migration:/app/src/main/resources/db/migration
+
+volumes:
+  postgres-data:
+  redis-data:

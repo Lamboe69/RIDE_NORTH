@@ -1,0 +1,73 @@
+spring:
+  application:
+    name: ridenorth-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ridenorth?currentSchema=public
+    username: ridenorth
+    password: ridenorth
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.spatial.dialect.postgis.PostgisPG95Dialect
+        format_sql: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+  redis:
+    host: localhost
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:ridenorth-super-secret-key-change-in-production}
+    expiration-ms: 86400000
+  otp:
+    expiration-ms: 300000
+    length: 6
+  mqtt:
+    broker: tcp://localhost:1883
+    client-id: ridenorth-backend
+    username: ${MQTT_USERNAME:}
+    password: ${MQTT_PASSWORD:}
+  momo:
+    api-key: ${MOMO_API_KEY:}
+    api-secret: ${MOMO_API_SECRET:}
+    callback-url: ${MOMO_CALLBACK_URL:http://localhost:8080/api/payments/momo/callback}
+  airtel:
+    api-key: ${AIRTEL_API_KEY:}
+    api-secret: ${AIRTEL_API_SECRET:}
+    callback-url: ${AIRTEL_CALLBACK_URL:http://localhost:8080/api/payments/airtel/callback}
+  africastalking:
+    api-key: ${AFRICASTALKING_API_KEY:}
+    username: ${AFRICASTALKING_USERNAME:}
+  matching:
+    initial-radius-m: 2000
+    max-radius-m: 10000
+    radius-step-m: 3000
+    accept-window-seconds: 20
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: always
