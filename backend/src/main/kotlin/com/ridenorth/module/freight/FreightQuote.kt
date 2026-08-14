@@ -34,7 +34,7 @@ class FreightQuote(
     var status: QuoteStatus = QuoteStatus.PENDING,
 
     @Column(nullable = false)
-    var createdAt: Instant? = null
+    override var createdAt: Instant? = null
 ) : BaseEntity()
 
 enum class QuoteStatus {

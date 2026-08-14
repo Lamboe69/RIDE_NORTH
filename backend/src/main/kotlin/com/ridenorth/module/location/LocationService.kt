@@ -1,5 +1,6 @@
 package com.ridenorth.module.location
 
+import com.ridenorth.module.driver.DriverProfile
 import com.ridenorth.module.driver.DriverProfileRepository
 import org.locationtech.jts.geom.Coordinate
 import org.locationtech.jts.geom.GeometryFactory

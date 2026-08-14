@@ -54,4 +54,17 @@ class NotificationService(
         val message = "RideNorth: Driver $driverName ($vehiclePlate) accepted your ride request. They are on the way."
         sendSms(riderPhone, message)
     }
+
+    fun sendDriverApprovalSms(phoneNumber: String, name: String) {
+        val message = "Congratulations $name! Your RideNorth driver application was approved. " +
+            "Your login is your phone number $phoneNumber with the OTP we text you each time. " +
+            "Download the RideNorth Driver app to start earning."
+        sendSms(phoneNumber, message)
+    }
+
+    fun sendDriverRejectionSms(phoneNumber: String, reason: String) {
+        val message = "Your RideNorth driver application was not approved. Reason: $reason. " +
+            "Contact RideNorth support for help with your application."
+        sendSms(phoneNumber, message)
+    }
 }

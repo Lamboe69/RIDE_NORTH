@@ -46,14 +46,14 @@ class ScheduledController(private val scheduledRouteService: ScheduledRouteServi
             operatorId = route.operator?.id.toString(),
             origin = route.origin,
             destination = route.destination,
-            departureTime = route.departureTime,
+            departureTime = route.departureTime!!,
             seatCapacity = route.seatCapacity,
             seatsBooked = route.seatsBooked,
             pricePerSeat = route.pricePerSeat,
             minSeatsToConfirm = route.minSeatsToConfirm,
             status = route.status,
             notes = route.notes,
-            createdAt = route.createdAt
+            createdAt = route.createdAt!!
         )
     }
 }

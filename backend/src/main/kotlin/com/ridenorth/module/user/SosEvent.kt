@@ -35,7 +35,7 @@ class SosEvent(
     var resolvedAt: Instant? = null,
 
     @Column(nullable = false)
-    var createdAt: Instant? = null
+    override var createdAt: Instant? = null
 ) : BaseEntity()
 
 enum class SosStatus {

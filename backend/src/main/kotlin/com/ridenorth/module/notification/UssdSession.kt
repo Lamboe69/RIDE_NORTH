@@ -2,6 +2,8 @@ package com.ridenorth.module.notification
 
 import com.ridenorth.common.BaseEntity
 import jakarta.persistence.*
+import org.hibernate.annotations.JdbcTypeCode
+import org.hibernate.type.SqlTypes
 import java.time.Instant
 
 @Entity
@@ -16,8 +18,8 @@ class UssdSession(
     @Column(nullable = false, length = 50)
     var sessionState: String = "",
 
-    @Column(length = 1000)
-    var sessionData: String = "{}",
+    @JdbcTypeCode(SqlTypes.JSON)
+    var sessionData: Map<String, String> = emptyMap(),
 
     @Column(nullable = false)
     var lastAction: String = "",
@@ -26,5 +28,5 @@ class UssdSession(
     var expiresAt: Instant? = null,
 
     @Column(nullable = false)
-    var createdAt: Instant? = null
+    override var createdAt: Instant? = null
 ) : BaseEntity()

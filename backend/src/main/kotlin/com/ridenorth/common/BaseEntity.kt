@@ -9,16 +9,16 @@ import java.time.Instant
 abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    var id: java.util.UUID? = null
+    open var id: java.util.UUID? = null
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
-    var createdAt: Instant? = null
+    open var createdAt: Instant? = null
 
     @UpdateTimestamp
     @Column(nullable = false)
-    var updatedAt: Instant? = null
+    open var updatedAt: Instant? = null
 
     @Column(nullable = false)
-    var isDeleted: Boolean = false
+    open var isDeleted: Boolean = false
 }

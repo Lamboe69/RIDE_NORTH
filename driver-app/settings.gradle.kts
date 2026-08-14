@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "RideNorth Driver App"
+
+include(":app")

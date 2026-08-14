@@ -10,7 +10,7 @@ import java.time.Instant
 @Table(name = "freight_jobs", indexes = [
     Index(name = "idx_freight_shipper", columnList = "shipper_id"),
     Index(name = "idx_freight_status", columnList = "status"),
-    Index(name = "idx_freight_pickup", columnList = "pickup_location", postgresqlExclude = " USING gist (pickup_location)")
+    Index(name = "idx_freight_pickup", columnList = "pickup_location")
 ])
 class FreightJob(
     @ManyToOne(fetch = FetchType.LAZY)
@@ -62,7 +62,7 @@ class FreightJob(
     var status: FreightJobStatus = FreightJobStatus.OPEN,
 
     @Column(nullable = false)
-    var createdAt: Instant? = null
+    override var createdAt: Instant? = null
 ) : BaseEntity()
 
 enum class CargoType {

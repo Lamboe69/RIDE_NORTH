@@ -53,7 +53,7 @@ class Payment(
     var failureReason: String? = null,
 
     @Column(nullable = false)
-    var createdAt: Instant? = null
+    override var createdAt: Instant? = null
 ) : BaseEntity()
 
 enum class PaymentMethod {

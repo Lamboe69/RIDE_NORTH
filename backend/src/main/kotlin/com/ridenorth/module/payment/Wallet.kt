@@ -28,5 +28,5 @@ class Wallet(
     var lastUpdated: Instant? = null,
 
     @Column(nullable = false)
-    var createdAt: Instant? = null
+    override var createdAt: Instant? = null
 ) : BaseEntity()

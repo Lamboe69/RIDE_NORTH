@@ -44,7 +44,7 @@ class Vehicle(
     var isActive: Boolean = true,
 
     @Column(nullable = false)
-    var createdAt: Instant? = null
+    override var createdAt: Instant? = null
 ) : BaseEntity()
 
 enum class VehicleType(val displayName: String, val passengerCapacity: Int) {

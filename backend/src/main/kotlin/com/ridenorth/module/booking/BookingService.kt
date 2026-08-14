@@ -9,6 +9,7 @@ import com.ridenorth.module.payment.PaymentService
 import com.ridenorth.module.pricing.PricingService
 import com.ridenorth.module.user.RatingRepository
 import com.ridenorth.module.user.UserRepository
+import com.ridenorth.module.user.UserRole
 import org.locationtech.jts.geom.Coordinate
 import org.locationtech.jts.geom.GeometryFactory
 import org.locationtech.jts.geom.Point

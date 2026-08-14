@@ -32,5 +32,5 @@ class Rating(
     var comment: String? = null,
 
     @Column(nullable = false)
-    var createdAt: Instant? = null
+    override var createdAt: Instant? = null
 ) : BaseEntity()

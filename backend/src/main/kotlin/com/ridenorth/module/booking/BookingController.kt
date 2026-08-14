@@ -3,6 +3,7 @@ package com.ridenorth.module.booking
 import com.ridenorth.common.dto.*
 import com.ridenorth.module.booking.TripRepository
 import jakarta.validation.Valid
+import org.locationtech.jts.geom.Point
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*

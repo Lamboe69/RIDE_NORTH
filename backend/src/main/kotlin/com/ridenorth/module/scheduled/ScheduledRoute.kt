@@ -50,7 +50,7 @@ class ScheduledRoute(
     var notes: String? = null,
 
     @Column(nullable = false)
-    var createdAt: Instant? = null
+    override var createdAt: Instant? = null
 ) : BaseEntity()
 
 enum class RouteStatus {

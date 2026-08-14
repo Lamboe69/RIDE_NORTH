@@ -10,7 +10,7 @@ import java.time.Instant
 @Table(name = "ride_requests", indexes = [
     Index(name = "idx_ride_rider", columnList = "rider_id"),
     Index(name = "idx_ride_status", columnList = "status"),
-    Index(name = "idx_ride_pickup", columnList = "pickup_location", postgresqlExclude = " USING gist (pickup_location)")
+    Index(name = "idx_ride_pickup", columnList = "pickup_location")
 ])
 class RideRequest(
     @ManyToOne(fetch = FetchType.LAZY)
@@ -53,7 +53,7 @@ class RideRequest(
     var expiresAt: Instant? = null,
 
     @Column(nullable = false)
-    var createdAt: Instant? = null
+    override var createdAt: Instant? = null
 ) : BaseEntity()
 
 enum class RideRequestStatus {

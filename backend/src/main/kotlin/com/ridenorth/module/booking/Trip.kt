@@ -58,11 +58,12 @@ class Trip(
     var paymentMethod: String = "CASH",
 
     @Column(nullable = false)
-    var createdAt: Instant? = null
+    override var createdAt: Instant? = null
 ) : BaseEntity()
 
 enum class TripStatus {
     STARTED,
+    IN_PROGRESS,
     COMPLETED,
     CANCELLED,
     DISPUTED

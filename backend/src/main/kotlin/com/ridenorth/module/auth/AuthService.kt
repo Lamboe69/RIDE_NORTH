@@ -2,6 +2,7 @@ package com.ridenorth.module.auth
 
 import com.ridenorth.common.dto.AuthResponse
 import com.ridenorth.common.dto.PhoneOtpRequest
+import com.ridenorth.common.dto.RegisterDriverRequest
 import com.ridenorth.common.dto.VerifyOtpRequest
 import com.ridenorth.module.driver.DriverProfile
 import com.ridenorth.module.driver.DriverProfileRepository
